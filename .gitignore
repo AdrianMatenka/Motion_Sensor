@@ -1,0 +1,16 @@
+
+# Build files
+build/
+cmake-build-*/
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp
+
+# Windows
+Thumbs.db
+Desktop.ini
