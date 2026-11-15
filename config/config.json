@@ -1,0 +1,28 @@
+{
+    "application": {
+        "name": "Motion Sensor",
+        "active_profile": "dark_souls"
+    },
+    "profiles": {
+        "dark_souls": {
+            "name": "Dark Souls",
+            "mappings": [
+                {
+                    "gesture": "LEFT_HAND_RAISED",
+                    "key": "SPACE",
+                    "mode": "ON_ACTIVATION"
+                },
+                {
+                    "gesture": "RIGHT_HAND_RAISED",
+                    "key": "SHIFT",
+                    "mode": "WHILE_ACTIVE"
+                }
+            ]
+        }
+    },
+    "gesture_settings": {
+        "confidence_threshold": 0.3,
+        "activation_delay_ms": 150,
+        "deactivation_delay_ms": 150
+    }
+}

@@ -7,6 +7,7 @@
 #include "Application.h"
 
 #include <iostream>
+#include <stdexcept>
 
 /*
 * @brief Constructs an Application object.
@@ -25,18 +26,10 @@ Application::Application()
         std::make_unique<RightHandRaised>()
     );
 
-    // Gesture mappings
-    gameController.addMapping({
-        GestureID::LEFT_HAND_RAISED,
-        VK_SPACE,
-        ActionMode::ON_ACTIVATION
-    });
-
-    gameController.addMapping({
-        GestureID::RIGHT_HAND_RAISED,
-        VK_SHIFT,
-        ActionMode::WHILE_ACTIVE
-    });
+    if (!gameController.loadMappings("config/config.json"))
+    {
+        throw std::runtime_error("Failed to load game mappings");
+    }
 }
 
 /*

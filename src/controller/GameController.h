@@ -6,6 +6,7 @@
 #include "GestureDetector.h"
 
 #include <vector>
+#include <string>
 
 enum class ActionMode
 {
@@ -26,7 +27,7 @@ class GameController
 public:
     explicit GameController(InputController& inputController);
 
-    void addMapping(const ActionMapping& mapping);
+    bool loadMappings(const std::string& configPath);
 
     void update(const GestureDetector& gestureDetector);
 

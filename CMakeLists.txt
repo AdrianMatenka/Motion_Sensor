@@ -11,6 +11,22 @@ pkg_check_modules(OpenCV REQUIRED opencv5)
 
 set(ONNXRUNTIME_ROOT "C:/msys64/ucrt64")
 
+include(FetchContent)
+
+FetchContent_Declare(
+    nlohmann_json
+    GIT_REPOSITORY https://github.com/nlohmann/json.git
+    GIT_TAG v3.12.0
+)
+
+FetchContent_MakeAvailable(nlohmann_json)
+
+configure_file(
+    "${CMAKE_SOURCE_DIR}/config/config.json"
+    "${CMAKE_BINARY_DIR}/config/config.json"
+    COPYONLY
+)
+
 add_executable(MotionSensor
     src/main.cpp
     src/camera/Camera.cpp
@@ -46,4 +62,5 @@ target_link_directories(MotionSensor PRIVATE
 target_link_libraries(MotionSensor PRIVATE
     ${OpenCV_LIBRARIES}
     onnxruntime
+    nlohmann_json::nlohmann_json
 )
