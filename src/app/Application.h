@@ -15,6 +15,7 @@
 #include "detectors/RightHandRaised.h"
 #include "InputController.h"
 #include "GameController.h"
+#include "GestureRenderer.h"
 
 /**
  * @class Application
@@ -37,6 +38,7 @@ private:
     PoseSmoother poseSmoother;
     PoseRenderer poseRenderer;
     GestureDetector gestureDetector;
+    GestureRenderer gestureRenderer;
 
     InputController inputController;
     GameController gameController;

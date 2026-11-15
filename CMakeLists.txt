@@ -23,6 +23,7 @@ add_executable(MotionSensor
     src/gestures/detectors/RightHandRaised.cpp
     src/controller/InputController.cpp
     src/controller/GameController.cpp
+    src/ui/GestureRenderer.cpp
 )
 
 target_include_directories(MotionSensor PRIVATE
@@ -34,6 +35,7 @@ target_include_directories(MotionSensor PRIVATE
     src/tracking
     src/gestures
     src/controller
+    src/ui
 )
 
 target_link_directories(MotionSensor PRIVATE

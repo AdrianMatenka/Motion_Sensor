@@ -106,12 +106,18 @@ int Application::run()
         gameController.update(gestureDetector);
 
         poseRenderer.draw(frame, keypoints);
+        gestureRenderer.draw(frame, gestureDetector);
 
         cv::imshow("Motion Sensor", frame);
 
-        if (cv::waitKey(1) == 27)
+        const int key = cv::waitKey(1);
+
+        if (key == 27)
             break;
-    }
+
+        if (key == 'm' || key == 'M')
+            gestureRenderer.toggleVisibility();
+        }
 
     shutdown();
 
@@ -133,3 +139,4 @@ void Application::shutdown()
 
     cv::destroyAllWindows();
 }
+                 

@@ -26,6 +26,8 @@ public:
 
     std::size_t getGestureCount() const;
 
+    std::vector<GestureID> getGestureIDs() const;
+
 private:
     std::vector<std::unique_ptr<Gesture>> gestures;
 };

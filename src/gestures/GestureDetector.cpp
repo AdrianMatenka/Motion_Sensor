@@ -60,3 +60,16 @@ std::size_t GestureDetector::getGestureCount() const
 {
     return gestures.size();
 }
+
+std::vector<GestureID> GestureDetector::getGestureIDs() const
+{
+    std::vector<GestureID> ids;
+    ids.reserve(gestures.size());
+
+    for (const auto& gesture : gestures)
+    {
+        ids.push_back(gesture->getID());
+    }
+
+    return ids;
+}
