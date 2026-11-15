@@ -22,7 +22,7 @@ public:
 
     void update(const std::vector<float>& keypoints);
 
-    GestureState getGestureState(std::size_t index) const;
+    GestureState getGestureState(GestureID id) const;
 
     std::size_t getGestureCount() const;
 

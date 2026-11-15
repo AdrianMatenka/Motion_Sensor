@@ -46,6 +46,11 @@ GestureState LeftHandRaised::getState() const
     return state;
 }
 
+GestureID LeftHandRaised::getID() const
+{
+    return GestureID::LEFT_HAND_RAISED;
+}
+
 bool LeftHandRaised::isHandRaised(
     const std::vector<float>& keypoints) const
 {

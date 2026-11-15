@@ -8,6 +8,12 @@
 
 #include <vector>
 
+enum class GestureID
+{
+    LEFT_HAND_RAISED,
+    RIGHT_HAND_RAISED
+};
+
 /**
  * @enum GestureState
  * @brief Represents the state of a gesture.
@@ -28,6 +34,8 @@ class Gesture
 {
 public:
     virtual ~Gesture() = default;
+
+    virtual GestureID getID() const = 0;
 
     virtual void update(
         const std::vector<float>& keypoints

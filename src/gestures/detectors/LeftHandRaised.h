@@ -12,6 +12,8 @@ public:
 
     GestureState getState() const override;
 
+    GestureID getID() const override;
+
 private:
     GestureState state = GestureState::INACTIVE;
 

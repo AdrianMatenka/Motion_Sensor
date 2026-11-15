@@ -14,11 +14,29 @@
 Application::Application()
     : camera(0),
       poseEstimator(L"models\\pose_model.onnx"),
-      poseRenderer(0.3f)
+      poseRenderer(0.3f),
+      gameController(inputController)
 {
     gestureDetector.addGesture(
         std::make_unique<LeftHandRaised>()
     );
+
+    gestureDetector.addGesture(
+        std::make_unique<RightHandRaised>()
+    );
+
+    // Gesture mappings
+    gameController.addMapping({
+        GestureID::LEFT_HAND_RAISED,
+        VK_SPACE,
+        ActionMode::ON_ACTIVATION
+    });
+
+    gameController.addMapping({
+        GestureID::RIGHT_HAND_RAISED,
+        VK_SHIFT,
+        ActionMode::WHILE_ACTIVE
+    });
 }
 
 /*
@@ -85,10 +103,7 @@ int Application::run()
 
         gestureDetector.update(keypoints);
 
-        const GestureState state = gestureDetector.getGestureState(0);
-
-        if (state == GestureState::JUST_ACTIVATED)
-            std::cout << "LEFT HAND RAISED!" << std::endl;
+        gameController.update(gestureDetector);
 
         poseRenderer.draw(frame, keypoints);
 
@@ -108,6 +123,8 @@ int Application::run()
  */
 void Application::shutdown()
 {
+    gameController.reset();
+
     if (initialized)
     {
         camera.release();

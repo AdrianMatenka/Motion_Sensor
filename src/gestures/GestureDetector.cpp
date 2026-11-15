@@ -38,13 +38,18 @@ void GestureDetector::update(const std::vector<float>& keypoints)
  * @param index The index of the gesture.
  * @return The state of the gesture.
  */
-GestureState GestureDetector::getGestureState(std::size_t index) const
-{
-    if (index >= gestures.size())
-        throw std::out_of_range("Invalid gesture index");
 
-    return gestures[index]->getState();
+GestureState GestureDetector::getGestureState(GestureID id) const
+{
+    for (const auto& gesture : gestures)
+    {
+        if (gesture->getID() == id)
+            return gesture->getState();
+    }
+
+    throw std::out_of_range("Gesture ID not registered");
 }
+
 
 /**
  * @brief Gets the number of gestures in the detector.
